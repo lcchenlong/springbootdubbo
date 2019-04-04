@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dubbo.demo.service.mapper.StudentMapper">
+  <resultMap id="StudentResultMap" type="dubbo.demo.model.entity.Student">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+  </resultMap>
+  <insert id="add" parameterType="dubbo.demo.model.entity.Student">
+    insert into student (num, name, age,sex)
+    values (#{num},#{name},#{age},#{sex})
+  </insert>
+  
+  <!--我自己加的方法-->
+  <select id="getAll" resultType="dubbo.demo.model.entity.Student">
+    select * from student
+  </select>
+</mapper>
