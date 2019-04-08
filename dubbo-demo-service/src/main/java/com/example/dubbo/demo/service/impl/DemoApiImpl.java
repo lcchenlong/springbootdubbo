@@ -11,9 +11,9 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * class description
+ * 方法实现类
  *
- * @author jeftom <jeftom@tenwe.com>
+ * @author chenlong
  * @date 2019-03-23 23:04
  * @since 1.0.0
  */
@@ -33,6 +33,9 @@ public class DemoApiImpl implements DemoApi {
 		return "Hello, " + name + " (from Spring Boot with dubbo-2.7.1)";
 	}
 
+	/**
+	 * 添加学生
+	 */
 	@Override
 	public void add(Student student) {
 		// TODO Auto-generated method stub
@@ -40,6 +43,9 @@ public class DemoApiImpl implements DemoApi {
 		studentMapper.add(student);
 	}
 
+	/**
+	 * 获取所有学生
+	 */
 	@Override
 	public List<Student> getAll() {
 		// TODO Auto-generated method stub

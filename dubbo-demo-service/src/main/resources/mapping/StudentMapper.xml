@@ -13,7 +13,6 @@
     values (#{num},#{name},#{age},#{sex})
   </insert>
   
-  <!--我自己加的方法-->
   <select id="getAll" resultType="dubbo.demo.model.entity.Student">
     select * from student
   </select>

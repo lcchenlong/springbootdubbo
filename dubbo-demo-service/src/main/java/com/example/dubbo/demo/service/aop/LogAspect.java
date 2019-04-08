@@ -29,6 +29,11 @@ import javassist.bytecode.CodeAttribute;
 import javassist.bytecode.LocalVariableAttribute;
 import javassist.bytecode.MethodInfo;
 
+/**
+ * 记录日志切面
+ * @author chenlong12
+ *
+ */
 @Component
 @Aspect
 public class LogAspect {
@@ -45,6 +50,7 @@ public class LogAspect {
 		Long startTimeMillis = System.currentTimeMillis();
 		JSONObject paramJson = this.printMethodParams(pj,String.valueOf(startTimeMillis));
 		logger.info("请求前：{}",paramJson.toString());
+		
 		Object retVal = pj.proceed();
 		
 		JSONObject returnJson = new JSONObject();
@@ -61,7 +67,13 @@ public class LogAspect {
         
 	}
 	
-	 @AfterThrowing(pointcut = "serviceLog()", throwing = "e")//切点在webpointCut()
+	/**
+	 * 抛除异常时的记录
+	 * @param joinPoint
+	 * @param e
+	 * @throws IOException
+	 */
+	 @AfterThrowing(pointcut = "serviceLog()", throwing = "e")
 	 public void handleThrowing(JoinPoint joinPoint, Exception e) throws IOException {
 		 Long startTimeMillis = System.currentTimeMillis();
 		 JSONObject paramJson = this.printMethodParams(joinPoint,String.valueOf(startTimeMillis));
